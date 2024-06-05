@@ -5,7 +5,7 @@ const Global = createGlobalStyle`
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Reddit+Mono';
+    font-family: 'Reddit+Mono', sans-serif;
 }
 
 body{
