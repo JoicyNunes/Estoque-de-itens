@@ -23,7 +23,7 @@ function App() {
       <Container>
         <Title>Cadastro de itens</Title>
       </Container>
-      <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
+      
       <Global/>
     </>
   );
