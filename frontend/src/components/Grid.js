@@ -14,27 +14,60 @@ const Table = styled.table`
     max-width: 800px
     margin: 20px auto;
     word-break: break-all;
+    border-collapse: collapse; 
 `
-export const Thead = styled.thead``;
+;
+export const Thead = styled.thead`
+    background-color: #f5f5f5;
+`
+;
 
 export const Tbody = styled.tbody``;
 
-export const Tr = styled.tr``;
+export const Tr = styled.tr`
+    &:nth-child(even) {
+        background-color: #f9f9f9;
+    `
+;
 
 export const Th = styled.th`
-    text-align: start;
-    border-bottom: insert;
-    padding-bottom: 5px;
-    max-width: 500px
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    
+    max-width: 500px;
 `;
 
 export const Td = styled.td`
-    padding-top: 15px;
-    text-align: center
+    padding-top: 10px;
+    text-align: center;
     width: ${(props) => (props.width ? props.width : "auto")};
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd; 
+    border-left: 1px solid #ddd; 
 `;
 
-const Grid = ({ registrations }) => {
+const Grid = ({ registrations, setRegistrations, setOnEdit }) => {
+    console.log(registrations);
+
+    const handleEdit = (item) => {
+        setOnEdit(item);
+    }
+
+    const handleDelete = async (ID) => {
+        await axios
+        .delete("http://localhost:8800/" + ID)
+        .then(({ data }) => {
+            const newArray = registrations.filter((register) => register.ID !== ID);
+    
+            setRegistrations(newArray);
+            toast.success(data);
+        })
+        .catch(({ data }) => toast.error(data));
+        setOnEdit(null);
+            
+    };
+
     return(
         <Table>
             <Thead>
@@ -56,13 +89,13 @@ const Grid = ({ registrations }) => {
                             <Td width="10%">{item.ID}</Td>
                             <Td width="20%">{item.NAME}</Td>
                             <Td width="20%">{item.DESCRIPTION}</Td>
-                            <Td width="30%">{item.ÃMOUNT}</Td>
+                            <Td width="30%">{item.AMOUNT}</Td>
                             <Td width="10%">{item.SALE_PRICE}</Td>
-                            <Td alignCenter width="5%">
-                                <CiEdit />
+                            <Td $alignCenter={true} width="5%">
+                                <CiEdit onClick={() => handleEdit(item)} />
                             </Td>
-                            <Td alignCenter width="5%">
-                                <MdDeleteOutline />
+                            <Td $alignCenter={true} width="5%">
+                                <MdDeleteOutline onClick={() => handleDelete(item.ID)} />
                             </Td>
                         </Tr>
                     ))
