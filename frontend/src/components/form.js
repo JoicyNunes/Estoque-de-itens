@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { IoMdSearch } from "react-icons/io";
 
 const FormContainer = styled.form`
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     width: 100%;
@@ -49,17 +47,6 @@ const InputArea = styled.div`
     display: flex;
     flex-direction: column;
 `;
-const InputSearch = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
-`;
-
-const SearchIconContainer = styled.div`
-    padding: 10px;
-`;
 
 const Button = styled.button`
     border: 1px solid #000000;
@@ -71,7 +58,7 @@ const Button = styled.button`
     align-items: center;
     justify-content: center;
     display: flex;
-    color: #F5F5F7;
+    color: #f5f5f7;
     width: 100px;
     height: 42px;
     background-color: #000000;
@@ -79,121 +66,73 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-const ButtonSearch = styled.button`
-    cursor: pointer;
-    background-color: transparent;
-    border: transparent;
-    font-size: 20px;
-`
-
-const SearchInput = styled.input`
-    height: 70px;
-    border: 1px solid #000000;
-    border-radius: 8px;
-    text-align: left;
-    width: 300px;
-    height: 42px;
-    background-color: transparent;
-    align-items: center;
-    padding-left: 25px;
-    font-size: 16px;
-    line-height: 10px;
-    display: block;
-`
-
-const Form = ({ onEdit, data }) => {
+const Form = ({ onEdit }) => {
     const [formData, setFormData] = useState({
         ID: "",
         NAME: "",
         DESCRIPTION: "",
         AMOUNT: "",
-        SALE_PRICE: ""
+        SALE_PRICE: "",
     });
-
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
         if (onEdit) {
-            setFormData({
-                ID: onEdit.ID,
-                NAME: onEdit.NAME,
-                DESCRIPTION: onEdit.DESCRIPTION,
-                AMOUNT: onEdit.AMOUNT,
-                SALE_PRICE: onEdit.SALE_PRICE
-            });
+        setFormData({
+            ID: onEdit.ID,
+            NAME: onEdit.NAME,
+            DESCRIPTION: onEdit.DESCRIPTION,
+            AMOUNT: onEdit.AMOUNT,
+            SALE_PRICE: onEdit.SALE_PRICE,
+        });
         }
     }, [onEdit]);
 
-    useEffect(() => {
-        if (searchTerm) {
-            const filtered = data.filter(item => 
-                item.NAME.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                item.ID.toString().includes(searchTerm) ||
-                item.DESCRIPTION.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            setFilteredData(filtered);
-        } else {
-            setFilteredData(data);
-        }
-    }, [searchTerm, data]);
-
     const handleChange = (e) => {
-        const { NAME, value } = e.target;
+        const { name, value } = e.target;
         setFormData({
-            ...formData,
-            [NAME]: value
+        ...formData,
+        [name]: value,
         });
     };
 
-    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const { ID, NAME, DESCRIPTION, AMOUNT, SALE_PRICE } = formData;
 
     if (!ID || !NAME || !DESCRIPTION || !AMOUNT || !SALE_PRICE) {
-        return toast.warn("Por favor preencha todos os campos");
+        return toast.warn();
     }
         if (onEdit) {
-            await axios.put("http://localhost:8800/" + onEdit.ID, {
+        await axios
+            .put("http://localhost:8800/" + onEdit.ID, {
                 ID,
                 NAME,
                 DESCRIPTION,
                 AMOUNT,
-                SALE_PRICE
+                SALE_PRICE,
             })
-            .then(({ data }) =>toast.success(data))
+            .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
         } else {
-            await axios.post("http://localhost:8800/", {
+        await axios
+            .post("http://localhost:8800/", {
                 ID,
                 NAME,
                 DESCRIPTION,
                 AMOUNT,
-                SALE_PRICE
+                SALE_PRICE,
             })
-            .then(({ data }) =>toast.success(data))
+            .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
-    
-    }
+        }
     };
 
     return (
         <FormContainer onSubmit={handleSubmit}>
-            <InputSearch>
-                <SearchInput
-                    type="search"
-                    placeholder="Pesquisar item"
-                    
-                />
-                <SearchIconContainer>
-                <ButtonSearch type="submit"><IoMdSearch /></ButtonSearch>
-                </SearchIconContainer>
-            </InputSearch>
             <InputArea>
                 <Label>ID</Label>
-                <Input 
+                <Input
                     name="ID"
                     placeholder="ID"
                     value={formData.ID}
@@ -203,7 +142,7 @@ const Form = ({ onEdit, data }) => {
 
             <InputArea>
                 <Label>Nome</Label>
-                <Input 
+                <Input
                     name="NAME"
                     placeholder="Nome do item"
                     value={formData.NAME}
@@ -213,7 +152,7 @@ const Form = ({ onEdit, data }) => {
 
             <InputArea>
                 <Label>Descrição</Label>
-                <TextInput 
+                <TextInput
                     name="DESCRIPTION"
                     placeholder="Descrição do item"
                     value={formData.DESCRIPTION}
@@ -223,7 +162,7 @@ const Form = ({ onEdit, data }) => {
 
             <InputArea>
                 <Label>Quantidade em estoque</Label>
-                <Input 
+                <Input
                     name="AMOUNT"
                     placeholder="Quantidade do item"
                     value={formData.AMOUNT}
@@ -233,7 +172,7 @@ const Form = ({ onEdit, data }) => {
 
             <InputArea>
                 <Label>Preço</Label>
-                <Input 
+                <Input
                     name="SALE_PRICE"
                     placeholder="Preço de venda"
                     value={formData.SALE_PRICE}

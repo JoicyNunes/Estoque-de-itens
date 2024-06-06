@@ -6,19 +6,20 @@ import { CiEdit } from "react-icons/ci";
 import { toast } from "react-toastify";
 
 const Table = styled.table`
-    width: 100%;
+    justify-content: center;
+    align-item: center;
     backgroud-color: #0000;
     padding: 20px;
     box-shadow: 0px 0px 5px #ccc
     border-radius: 5px
     max-width: 800px
-    margin: 20px auto;
     word-break: break-all;
     border-collapse: collapse; 
+    border: 2px solid #000000;
 `
 ;
 export const Thead = styled.thead`
-    background-color: #f5f5f5;
+    background-color: #dddddd;
 `
 ;
 
@@ -26,33 +27,32 @@ export const Tbody = styled.tbody``;
 
 export const Tr = styled.tr`
     &:nth-child(even) {
-        background-color: #f9f9f9;
-    `
+        background-color: #dddddd;
+`
 ;
 
 export const Th = styled.th`
     text-align: center;
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-    max-width: 500px;
+    justify-content: center;
+    align-items: center;
+    
 `;
 
 export const Td = styled.td`
     padding-top: 10px;
+    border: 1px solid black;
     text-align: center;
     width: ${(props) => (props.width ? props.width : "auto")};
     border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd; 
-    border-left: 1px solid #ddd; 
 `;
 
 export const TdIcons = styled.td`
     padding-top: 10px;
+    border: 1px solid black;
     text-align: center;
     width: ${(props) => (props.width ? props.width : "auto")};
     border-bottom: 1px solid #ddd;
-    border-right: 1px solid #ddd; 
-    border-left: 1px solid #ddd; 
     font-size: 20px;
     cursor: pointer
 `;
