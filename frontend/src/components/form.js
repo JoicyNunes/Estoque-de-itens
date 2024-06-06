@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { IoMdSearch } from "react-icons/io";
 
 const FormContainer = styled.form`
     display: flex;
@@ -48,6 +49,17 @@ const InputArea = styled.div`
     display: flex;
     flex-direction: column;
 `;
+const InputSearch = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+`;
+
+const SearchIconContainer = styled.div`
+    padding: 10px;
+`;
 
 const Button = styled.button`
     border: 1px solid #000000;
@@ -67,12 +79,19 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
+const ButtonSearch = styled.button`
+    cursor: pointer;
+    background-color: transparent;
+    border: transparent;
+    font-size: 20px;
+`
+
 const SearchInput = styled.input`
     height: 70px;
     border: 1px solid #000000;
     border-radius: 8px;
     text-align: left;
-    width: 200px;
+    width: 300px;
     height: 42px;
     background-color: transparent;
     align-items: center;
@@ -82,7 +101,7 @@ const SearchInput = styled.input`
     display: block;
 `
 
-const Form = ({ onEdit }) => {
+const Form = ({ onEdit, data }) => {
     const [formData, setFormData] = useState({
         ID: "",
         NAME: "",
@@ -90,6 +109,9 @@ const Form = ({ onEdit }) => {
         AMOUNT: "",
         SALE_PRICE: ""
     });
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
         if (onEdit) {
@@ -103,14 +125,28 @@ const Form = ({ onEdit }) => {
         }
     }, [onEdit]);
 
+    useEffect(() => {
+        if (searchTerm) {
+            const filtered = data.filter(item => 
+                item.NAME.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                item.ID.toString().includes(searchTerm) ||
+                item.DESCRIPTION.toLowerCase().includes(searchTerm.toLowerCase())
+            );
+            setFilteredData(filtered);
+        } else {
+            setFilteredData(data);
+        }
+    }, [searchTerm, data]);
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { NAME, value } = e.target;
         setFormData({
             ...formData,
-            [name]: value
+            [NAME]: value
         });
     };
 
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -145,12 +181,16 @@ const Form = ({ onEdit }) => {
 
     return (
         <FormContainer onSubmit={handleSubmit}>
-            <SearchInput>
+            <InputSearch>
+                <SearchInput
+                    type="search"
+                    placeholder="Pesquisar item"
                     
-                    </SearchInput>
-            <InputArea>
-                
-            </InputArea>
+                />
+                <SearchIconContainer>
+                <ButtonSearch type="submit"><IoMdSearch /></ButtonSearch>
+                </SearchIconContainer>
+            </InputSearch>
             <InputArea>
                 <Label>ID</Label>
                 <Input 

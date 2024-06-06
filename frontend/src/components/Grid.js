@@ -34,7 +34,6 @@ export const Th = styled.th`
     text-align: center;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
-    
     max-width: 500px;
 `;
 
@@ -45,6 +44,17 @@ export const Td = styled.td`
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd; 
     border-left: 1px solid #ddd; 
+`;
+
+export const TdIcons = styled.td`
+    padding-top: 10px;
+    text-align: center;
+    width: ${(props) => (props.width ? props.width : "auto")};
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd; 
+    border-left: 1px solid #ddd; 
+    font-size: 20px;
+    cursor: pointer
 `;
 
 const Grid = ({ registrations, setRegistrations, setOnEdit }) => {
@@ -91,12 +101,12 @@ const Grid = ({ registrations, setRegistrations, setOnEdit }) => {
                             <Td width="20%">{item.DESCRIPTION}</Td>
                             <Td width="30%">{item.AMOUNT}</Td>
                             <Td width="10%">{item.SALE_PRICE}</Td>
-                            <Td $alignCenter={true} width="5%">
+                            <TdIcons $alignCenter={true} width="5%">
                                 <CiEdit onClick={() => handleEdit(item)} />
-                            </Td>
-                            <Td $alignCenter={true} width="5%">
+                            </TdIcons>
+                            <TdIcons $alignCenter={true} width="5%">
                                 <MdDeleteOutline onClick={() => handleDelete(item.ID)} />
-                            </Td>
+                            </TdIcons>
                         </Tr>
                     ))
                 ) : (

@@ -5,11 +5,11 @@ export const getRegistrations = (_, res) => {
 
     db.query(q, (err, data) => {
         if (err) {
-            console.error("Error fetching registrations: ", err);
+            console.error(err);
             return res.status(500).json(err);
         }
 
-        console.log("Registrations fetched successfully: ", data);
+        console.log(data);
         return res.status(200).json(data);
     });
 };
