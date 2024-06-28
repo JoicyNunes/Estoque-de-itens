@@ -1,40 +1,15 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Li = styled.li`
-  width: 100%;
-  text-align: center;
-  display: flex;
-  margin-top: 10px;
-  display: inline-block;
-  font-weight: bold;
-  line-height: Auto;
-  align-items: center;
-  position: relative;
-  margin-top:50px;
-`
-export const StyleLink = styled(Link)`
-  margin: 0 10px;
-  text-decoration: none;
-  border: 1px solid #000000;
-  border-radius: 8px;
-  background-color: #000000;
-  font-size: 20px;
-  color: #f5f5f7;
-  &:hover {
-    color: #ccc;
-  } 
-`;
-
+import { IoMdRocket } from "react-icons/io";
+import '../layout/navbar.css';
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="navbar"> <div className="rocket"><IoMdRocket /></div>
       <ul>
-        <Li>
-          <StyleLink to="/Register">Cadastro de item</StyleLink>
+        <li>
+          <Link to="/Register">todo</Link>
           {/* <StyleLink to="/OrderItem">Pedidos</StyleLink> */}
-        </Li>
+        </li>
       </ul>
     </nav>
   );
