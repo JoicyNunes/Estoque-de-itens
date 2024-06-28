@@ -18,7 +18,7 @@ function App() {
       <Container>
         <Routes>
           <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/OrderItem" element={<OrderItem />} />
+          {/* <Route exact path="/OrderItem" element={<OrderItem />} /> */}
         </Routes>
       </Container>
       <Global />

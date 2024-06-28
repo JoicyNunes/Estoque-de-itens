@@ -33,7 +33,7 @@ function Navbar() {
       <ul>
         <Li>
           <StyleLink to="/Register">Cadastro de item</StyleLink>
-          <StyleLink to="/OrderItem">Pedidos</StyleLink>
+          {/* <StyleLink to="/OrderItem">Pedidos</StyleLink> */}
         </Li>
       </ul>
     </nav>
