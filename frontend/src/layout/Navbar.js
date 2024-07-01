@@ -7,7 +7,8 @@ function Navbar() {
     <nav className="navbar"> <div className="rocket"><IoMdRocket /></div>
       <ul>
         <li>
-          <Link to="/Register">todo</Link>
+          <Link to="/List">todo</Link>
+          {/* <Link to="/Register">Cadastrar</Link> */}
           {/* <StyleLink to="/OrderItem">Pedidos</StyleLink> */}
         </li>
       </ul>
