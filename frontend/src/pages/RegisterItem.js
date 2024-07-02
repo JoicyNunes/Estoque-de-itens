@@ -8,7 +8,6 @@
 // import { useState, useEffect } from "react";
 // import { toast } from "react-toastify";
 
-// const Title = styled.h2``;
 
 // function Register() {
 //   const [registrations, setRegistrations] = useState([]);

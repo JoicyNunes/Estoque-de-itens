@@ -15,11 +15,10 @@ export const getList = (_, res) => {
 
 export const addList = (req, res) => {
     const q = 
-    "INSERT INTO `crud`.`list` (`ID`, `LIST`) VALUES(?)";
+    "INSERT INTO `crud`.`list` (`LIST`) VALUES(?)";
 
     const values = [
-        req.body.ID,
-        req.body.LIST,
+        req.body.LIST
     ];
 
     db.query(q, [values], (err) => {
