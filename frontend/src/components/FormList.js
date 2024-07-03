@@ -11,6 +11,14 @@ const FormList = ({ onEdit }) => {
         LIST: "",
     });
 
+    useEffect(() => {
+        if (onEdit) {
+            setFormData({
+            LIST: onEdit.LIST,
+            });
+        }
+    }, [onEdit]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -19,8 +27,32 @@ const FormList = ({ onEdit }) => {
         });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        const { LIST } = formData;
+            if (!LIST) {
+                return toast.warn();
+            }
+            if (onEdit) {
+                await axios
+                .put("http://localhost:8800/" + onEdit.ID, {
+                LIST,
+                })
+                .then(({ data }) => toast.success(data))
+                .catch(({ data }) => toast.error(data));
+            } else {
+                await axios
+                .post("http://localhost:8800/", {
+                LIST,
+                })
+                .then(({ data }) => toast.success(data))
+                .catch(({ data }) => toast.error(data));
+                }
+            };
+
     return(
-        <form className="container">
+        <form className="container" onSubmit={handleSubmit}>
             <div className="input-list">
                 <input 
                     name="LIST"

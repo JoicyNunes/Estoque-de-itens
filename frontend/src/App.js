@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./../src/App.css";
 
-import Navbar from './layout/Navbar.js';
+// import Navbar from './layout/Navbar.js';
 
 import { IoMdRocket } from "react-icons/io";
 
@@ -10,20 +10,35 @@ import { IoMdRocket } from "react-icons/io";
 // import OrderItem from './pages/OrderItem.js';
 import List from './pages/List.js'
 
+//components
+import Empty from './components/Empty.js';
+
 function App() {
   return (
-    <Router>
-      <div className="topo">
-        <div className="rocket"><IoMdRocket />
-          <p>todo</p>
-          <Routes>
-            <Route exact path="/List" element={<List />} /> 
-            {/* <Route exact path="/Register" element={<Register />} />  */}
-            {/* <Route exact path="/OrderItem" element={<OrderItem />} /> */}
-          </Routes>
-        </div>
-      </div>
-    </Router>
+  <form className="conteiner">
+    
+    <div className="topo">
+      <div className="rocket"><IoMdRocket />
+        <p>todo</p>
+        <List />
+      </div> 
+    </div>
+
+    <Empty />
+  </form>
+  
+    // <Router>
+    //   <div className="topo">
+    //     <div className="rocket"><IoMdRocket />
+    //       <p>todo</p>
+    //       <Routes>
+    //         <Route exact path="/List" element={<List />} /> 
+    //         {/* <Route exact path="/Register" element={<Register />} />  */}
+    //         {/* <Route exact path="/OrderItem" element={<OrderItem />} /> */}
+    //       </Routes>
+    //     </div>
+    //   </div>
+    // </Router>
   );
 }
 
