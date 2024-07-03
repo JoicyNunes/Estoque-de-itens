@@ -3,6 +3,7 @@ import FormList from '../components/FormList';
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import TaskList from '../components/TaskList.js';
 
 function List() {
     const [list, setList] = useState([]);
@@ -35,6 +36,7 @@ function List() {
                         getList={getList}
                         onFormSubmit={handleFormSubmit}
                     />
+                    <TaskList />
                 </form>
             </div>
         </>

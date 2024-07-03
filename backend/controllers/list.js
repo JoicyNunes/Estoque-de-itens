@@ -18,7 +18,7 @@ export const addList = (req, res) => {
     "INSERT INTO `crud`.`list` (`LIST`) VALUES(?)";
 
     const values = [
-        req.body.LIST
+        req.body.LIST,
     ];
 
     db.query(q, [values], (err) => {
@@ -30,10 +30,9 @@ export const addList = (req, res) => {
 
 export const updateList = (req, res) => {
     const q =
-    "UPDATE `crud`.`list` SET `ID` = ?, `LIST` = ? WHERE `ID` = ?";
+    "UPDATE `crud`.`list` SET `LIST` = ? WHERE `ID` = ?";
 
     const values = [
-        req.body.ID,
         req.body.LIST,
     ];
 

@@ -12,6 +12,7 @@ import List from './pages/List.js'
 
 //components
 import Empty from './components/Empty.js';
+import Task from './components/Task.js';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <List />
       </div> 
     </div>
-
+    <Task />
     <Empty />
   </form>
   
