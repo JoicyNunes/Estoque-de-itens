@@ -1,18 +1,18 @@
 import '../styles/task.css';
 
-export function Task() {
+export function Task({ createdCount, completedCount }) {
     return(
         <section className="task-list">
             <header className="task-header">
                 <div>
                     <p>Tarefas criadas
-                    <span>10</span>
+                    <span>{createdCount}</span>
                     </p>
                 </div>
 
                 <div>
                     <p className="task-purple">Concluídas
-                    <span>0</span>
+                    <span>{completedCount}</span>
                     </p>
                 </div>
             </header>

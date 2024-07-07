@@ -10,10 +10,6 @@ import { IoMdRocket } from "react-icons/io";
 // import OrderItem from './pages/OrderItem.js';
 import List from './pages/List.js'
 
-//components
-import Empty from './components/Empty.js';
-import Task from './components/Task.js';
-
 function App() {
   return (
   <form className="conteiner">
@@ -24,8 +20,6 @@ function App() {
         <List />
       </div> 
     </div>
-    <Task />
-    <Empty />
   </form>
   
     // <Router>

@@ -1,45 +1,54 @@
 import '../styles/list.css'
-import FormList from '../components/FormList';
-import axios from "axios";
 import { useState, useEffect } from "react";
+import FormList from '../components/FormList';
+
+import axios from "axios";
 import { toast } from "react-toastify";
+
+//components
 import TaskList from '../components/TaskList.js';
+import Task from '../components/Task.js';
+import Empty from '../components/Empty.js';
+
 
 function List() {
-    const [list, setList] = useState([]);
-    const [onEdit, setOnEdit] = useState(null);
+  const [list, setList] = useState([]);
+  const [onEdit, setOnEdit] = useState(null);
 
-   const getList= async () => {
-     try {
-       const res = await axios.get("http://localhost:8800/");
-       setList(res.data.sort((a, b) => (a.ID > b.ID ? 1 : -1)));
-     } catch (error) {
-       toast.error(error);
-     }
-   };
+  const getList= async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/");
+      setList(res.data.sort((a, b) => (a.ID > b.ID ? 1 : -1)));
+      } catch (error) {
+          toast.error(error);
+        }
+    };
 
-   const handleFormSubmit = () => {
-     getList();
-   };
+  const handleFormSubmit = () => {
+    getList();
+  };
 
-   useEffect(() => {
-     getList();
-   }, [setList]);
+  useEffect(() => {
+    getList();
+  }, []);
+
+  const createdCount = list.length;
+  const completedCount = list.filter(task => task.completed).length;
 
     return(
-        <>
-            <div className="container">
-                <form className="container-list">
-                    <FormList
-                        onEdit={onEdit}
-                        setOnEdit={setOnEdit}
-                        getList={getList}
-                        onFormSubmit={handleFormSubmit}
-                    />
-                    <TaskList />
-                </form>
-            </div>
-        </>
+      <form className="container">
+        <div className="container-list">
+          <FormList
+            onEdit={onEdit}
+            setOnEdit={setOnEdit}
+            getList={getList}
+            onFormSubmit={handleFormSubmit}
+          />
+        </div>
+
+        <Task createdCount={createdCount} completedCount={completedCount} />
+        {createdCount > 0 ? <TaskList list={list} /> : <Empty />}
+      </form>
     )
 };
 

@@ -2,7 +2,7 @@
 
 .input-list input {
     box-sizing: border-box;
-    display:inline-block;
+    display: inline-block;
     flex-direction: row;
     align-items: center;
     padding: 16px;

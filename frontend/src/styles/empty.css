@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
-.container-empty{
+.container-empty {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -12,10 +12,8 @@
     height: 244px;
     border-top: 1px solid #333333;
     border-radius: 8px;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+    margin: 0 auto; /* Centraliza o container */
+    margin-top: 50px; /* Ajuste conforme necessário */
 }
 
 .text {
@@ -26,18 +24,12 @@
     line-height: 140%;
     text-align: center;
     color: #808080;
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
 }
 
 .clipboard {
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
     font-size: 50px;
     color: #808080;
 }
