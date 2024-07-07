@@ -1,0 +1,126 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.conteiner{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: #1A1A1A;
+}
+
+.container-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 8px;
+    position: absolute;
+    width: 736px;
+    height: 54px;
+    left: calc(50% - 736px/2);
+    top: 173px;
+    box-sizing: border-box;
+}
+
+.input-list input {
+    box-sizing: border-box;
+    display: inline-block;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 8px;
+    width: 638px;
+    height: 54px;
+    background: #262626;
+    border: 1px solid #0D0D0D;
+    border-radius: 8px;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    color: #D9D9D9;
+}
+
+.input-list input::placeholder{
+    width: 192px;
+    height: 22px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #808080;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.input-list::focus {
+    border-color: #5E60CE;
+}
+
+.button-list {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.25rem;
+    padding: 1rem;
+    background-color: #1E6F9F;
+    color: #F2F2F2;
+    border: 0;
+    border-radius: 8px;
+    gap: 0.5rem;
+    box-shadow: none;
+    line-height: 140%;
+    font-weight: bold;
+    font-size: 0.875rem;
+    transition: 0.2s;
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+.button-list:hover {
+    background-color: #4EA8DE;
+}
+
+.circle{
+    font-size: 17px;
+}
+
+.container-empty {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 64px 24px;
+    gap: 16px;
+    width: 736px;
+    height: 244px;
+    border-top: 1px solid #333333;
+    border-radius: 8px;
+    margin: 0 auto; 
+    margin-top: 50px; 
+}
+
+.text {
+    height: 44px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 140%;
+    text-align: center;
+    color: #808080;
+}
+
+.clipboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #808080;
+} */
