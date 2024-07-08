@@ -17,7 +17,7 @@
     margin-right: auto;
 }
 
-p.textConcluded {
+.textConcluded p {
     color: #808080;
     text-decoration: line-through;
 }
@@ -42,12 +42,20 @@ p.textConcluded {
     color: #5E60CE;
 }
 
+.checkContainer:hover {
+    color: #1E6F9F;
+}
+
 .deleteButton {
     background: none;
     border: none;
     color: #808080;
 }
 
-.deleteButton:hover{
-    background-color: #E25858;
+.deleteButton:hover {
+    color: #E25858;
+    border: 2px solid #333333;
+    background: #333333;
+    border-radius: 5px;
+
 }

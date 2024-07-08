@@ -29,6 +29,10 @@
     font-size: 16px;
 }
 
+.input-task input:hover{
+    border: 1px solid #5E60CE;
+}
+
 .input-task input::placeholder {
     color: #808080;
 }

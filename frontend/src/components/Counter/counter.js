@@ -17,7 +17,7 @@ export function Counter({ counter, onDelete, onComplete }) {
 
                 <div>
                     <p className="counter-purple">Concluídas</p>
-                    <span>{completedCounter}</span>
+                    <span>{completedCounter} de {counterQty}</span>
                 </div>
             </header>
 
